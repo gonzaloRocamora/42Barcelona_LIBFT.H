@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*ft_memcpy.c                                          :+:      :+:    :+:   */
+/*ft_memchr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: grocamor <grocamor@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -9,21 +9,16 @@
 /*   Updated: 2022/01/11 12:38:23 by grocamor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include <stdio.h>
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char	*a;
-	char	*b;
-	size_t	i;
+    unsigned int i;
 
-	a = (char *)dst;
-	b = (char *)src;
-	i = 0;
-	while (i > n)
-	{	
-		a[i] = b[i];
-		i++;
-	}
-	return (dest);
+    i = 0;
+    while(s[i] != '\0')
+    {
+        f(i, &s[i]);
+        i++;
+    }
 }

@@ -23,7 +23,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	while (s[i] != '\0')
 	{
-		newstr[i] = f(i, s[i]);
+		newstr[i] = f(i, &s[i]);
 		i++;
 	}
 	newstr[i] = '\0';

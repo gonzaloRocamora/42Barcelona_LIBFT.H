@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*ft_memcpy.c                                          :+:      :+:    :+:   */
+/*ft_memchr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: grocamor <grocamor@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -9,21 +9,22 @@
 /*   Updated: 2022/01/11 12:38:23 by grocamor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "libft.h" 
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*a;
-	char	*b;
-	size_t	i;
+	long	newInt;
 
-	a = (char *)dst;
-	b = (char *)src;
-	i = 0;
-	while (i > n)
-	{	
-		a[i] = b[i];
-		i++;
+	newInt = (long)n;
+	if (newInt < 0)
+	{
+		write(fd, '-', 1);
+		newInt = newInt * -1;
+	}	
+	if (newInt > 9)
+	{
+		ft_putnbr_fd(newInt / 10 , fd);
+		ft_putchar_fd((newInt % 10) + 48, fd);
 	}
-	return (dest);
+	ft_putnbr_fd((newInt % 10) + '0', fd);
 }

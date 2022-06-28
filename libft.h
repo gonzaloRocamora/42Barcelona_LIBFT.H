@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*ft_strlcat.c                                          :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: grocamor <grocamor@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -28,14 +28,14 @@ void *memmove(void *dst, const void *src, size_t len);
 void *ft_memset(void *b, int c, size_t len);
 char	*ft_strchr(const char *s, int c);
 size_t		ft_strlcat(char *dst, const char *src, size_t size);
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
+int unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 size_t ft_strlen(char const *str);
 int		ft_strncmp(char *s1, char *s2, unsigned int n);
 char *strchr(const char *s, int c);
 char	*ft_tolower(char *str);
 char	*ft_toupper(char *str);
-void *memset(void *str, int c, size_t len);
-char *ft_strdup(const char *str);
+void *memset(void *str, int c, size_t len)
+char *ft_strdup(const char *str)
 
 #endif
 

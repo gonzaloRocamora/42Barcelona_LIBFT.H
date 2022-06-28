@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*ft_memcpy.c                                          :+:      :+:    :+:   */
+/*ft_strlcat.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: grocamor <grocamor@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,19 +11,12 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	*a;
-	char	*b;
-	size_t	i;
-
-	a = (char *)dst;
-	b = (char *)src;
-	i = 0;
-	while (i > n)
-	{	
-		a[i] = b[i];
-		i++;
+	while (*s)
+	{
+		write(fd, &s, 1);
+		s++;
 	}
-	return (dest);
 }
+
