@@ -9,49 +9,50 @@
 /*   Updated: 2022/01/11 12:38:23 by grocamor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-unsigned int ft_len(int i)
+static int	ft_len(long int i)
 {
-	int	len;
+	int	count;
 
-	len  = 0;
+	count = 0;
 	if (i < 0)
+	{
 		i = i * -1;
-		len++;
-	while(i > 0)
+		count++;
+	}
+	while (i > 0)
+	{
 		i = i / 10;
-		len++;
-	return (len);
+		count++;
+	}
+	return (count);
 }
 
-int *ft_itoa(int nb)
+char	*ft_itoa(int nb)
 {
-	char *newstr;
-	long int len;
-		
-	len = ft_len(nb);
+	char		*newstr;
+	int			len;
+	long int	n;
+
+	n = nb;
+	len = ft_len(n) - 1;
 	newstr = (char *)malloc(sizeof(char) * (len + 1));
-	while(nb == 0)
+	if (!newstr)
+		return (NULL);
+	if (n == 0)
 	{
 		newstr[0] = 48;
 	}
-	while(nb < 0)
+	if (n < 0)
 	{
 		newstr[0] = '-';
-		nb = nb * -1;
+		n = n * -1;
 	}
-	while(nb > 9)
+	while (n > 0)
 	{
-		newstr[len] = 48 + (nb % 10);
-		nb = nb / 10;
-		len--;
+		newstr[len--] = n % 10 + '0';
+		n = n / 10;
 	}
 	return (newstr);
-}
-int main(void)
-{
-	printf("%s\n", ft_itoa(123156));
-	return (0);
 }

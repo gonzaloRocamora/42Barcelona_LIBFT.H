@@ -1,5 +1,16 @@
-#include <stdio.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*ft_strlcat.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: grocamor <grocamor@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/11 12:38:19 by grocamor          #+#    #+#             */
+/*   Updated: 2022/01/11 12:38:23 by grocamor         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "libft.h"
+
 static size_t	ft_strlen(char const *str)
 {
 	int	i;
@@ -55,7 +66,7 @@ char		**ft_split(char const *s, char c)
 	int		index;
 	char	**split;
 
-	if (!s || !(split = malloc((count_words(s, c) + 1) * sizeof(char *))))
+	if (!s || !(split == malloc((count_words(s, c) + 1) * sizeof(char *))))
 		return (0);
 	i = 0;
 	j = 0;
@@ -73,19 +84,4 @@ char		**ft_split(char const *s, char c)
 	}
 	split[j] = 0;
 	return (split);
-}
-
-int main(void)
-{
-    char test[] = "hola como estas";
-    char c = ' ';
-    char **splited;
-    splited  = ft_split(test, c);
-    int i = 0;
-	while(splited[i] != 0)
-	{
-		printf("[%s]", splited[i]);
-		i++;
-	}
-	return(0);   
 }

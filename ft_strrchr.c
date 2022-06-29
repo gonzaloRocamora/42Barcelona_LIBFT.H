@@ -17,7 +17,7 @@ char	*strchr(const char *s, int c)
 	char	key;
 
 	i = strlen(s);
-	key = (char c);
+	key = (char)c;
 	while (i > 0)
 	{
 		if (s[i] != key)
