@@ -18,13 +18,13 @@ void	ft_putnbr_fd(int n, int fd)
 	newint = (long)n;
 	if (newint < 0)
 	{
-		write(fd, '-', 1);
+		ft_putchar_fd('-', fd);
 		newint = newint * -1;
 	}	
-	if (newint > 9)
+	if (newint >= 9)
 	{
-		ft_putnbr_fd(newint / 10 , fd);
+		ft_putnbr_fd(newint / 10, fd);
 		ft_putchar_fd((newint % 10) + 48, fd);
 	}
-	ft_putnbr_fd((newint % 10) + '0', fd);
+	ft_putchar_fd((newint % 10) + '0', fd);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grocamor <grocamor@student.42barcel>       +#+  +:+       +#+        */
+/*   By: grocamor <grocamor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:38:19 by grocamor          #+#    #+#             */
-/*   Updated: 2022/01/11 12:38:23 by grocamor         ###   ########.fr       */
+/*   Updated: 2022/07/02 12:55:00 by grocamor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <stdlib.h>
+
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -24,8 +24,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	x = ft_strlen(s1);
 	len = ft_strlen(s1) + ft_strlen(s2);
-	if (!(newstr = malloc(sizeof(char) * (len + 1))))
-		return (NULL)
+	if (!(newstr == malloc(sizeof(char) * (len + 1))))
+		return (NULL);
 	while (s1[i] != '\0')
 	{
 		newstr[i] = s1[i];

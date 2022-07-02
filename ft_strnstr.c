@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*ft_strnstr.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grocamor <grocamor@student.42barcel>       +#+  +:+       +#+        */
+/*   By: grocamor <grocamor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:38:19 by grocamor          #+#    #+#             */
-/*   Updated: 2022/01/11 12:38:23 by grocamor         ###   ########.fr       */
+/*   Updated: 2022/07/02 11:54:33 by grocamor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 {
-	char	*haystack;
 	size_t	i;
 	size_t	j;
 	size_t	size;
