@@ -47,7 +47,7 @@ OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(OBJ): %.0:%.c
+$(OBJ): %.o:%.c
 		@echo -n $(NAME):' $@: '
 		@$(CC) -c $(FLAGS) $(INCLUDES) $< -o $@
 		@echo "$(SUCCESS)"
