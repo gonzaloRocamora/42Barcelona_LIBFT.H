@@ -9,24 +9,25 @@
 /*   Updated: 2022/01/16 16:36:32 by grocamor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strdup(const char *str)
 {
-	char	*new;
-	int		i;
-	int		size;
+		char	*newstr;
+		int		count;
+		size_t	len;
 
-	i = 0;
-	size = 0;
-	while (str[size] != '\0')
-		size++;
-	if (!(new == malloc(sizeof(char) * (size + 1))))
-		return (NULL);
-	while (*str)
-	{
-		new[i++] = *str++;
-	new[i] = '\0';
-	}
-	return (new);
+		count = 0;
+		len = ft_strlen(str);
+		newstr = malloc(sizeof(char) * (len + 1));
+		if (!newstr)
+			return (NULL);
+		while (str[count] != '\0')
+		{
+			newstr[count] = str[count];
+			count++;
+		}
+		newstr[count] = '\0';
+		return (newstr);
 }
