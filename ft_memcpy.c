@@ -13,15 +13,15 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	*d;
-	char	*s;
-	size_t	i;
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
 
-	d = (char *)dst;
-	s = (char *)src;
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
 	i = 0;
-	if(!d && !s)
-		return (NULL)
+	if (!d && !s)
+		return (NULL);
 	while (i < n)
 	{	
 		d[i] = s[i];
@@ -29,3 +29,13 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (d);
 }
+
+// int main(void)
+// {
+// 	char *dst = "";
+// 	char *src = "holacomoestas";
+// 	size_t j = 5;
+// 	char *total = ft_memcpy(dst, src, j);
+// 	printf("%s", total);
+// 	return (0);
+// }

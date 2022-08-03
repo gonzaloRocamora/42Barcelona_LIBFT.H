@@ -6,7 +6,7 @@
 /*   By: grocamor <grocamor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:38:19 by grocamor          #+#    #+#             */
-/*   Updated: 2022/07/02 12:52:08 by grocamor         ###   ########.fr       */
+/*   Updated: 2022/07/05 13:43:33 by grocamor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int	count_words(const char *str, char c)
 			trigger = 0;
 		str++;
 	}
-	printf("Count words: %d", i);
 	return (i);
 }
 
@@ -44,7 +43,6 @@ static char	*word_dup(const char *str, int start, int finish)
 	while (start < finish)
 		word[i++] = str[start++];
 	word[i] = '\0';
-	printf("Wordup: %s", word);
 	return (word);
 }
 
