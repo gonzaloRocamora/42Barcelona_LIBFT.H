@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*ft_strlcat.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grocamor <grocamor@student.42barcel>       +#+  +:+       +#+        */
+/*   By: grocamor <grocamor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:38:19 by grocamor          #+#    #+#             */
-/*   Updated: 2022/01/11 12:38:23 by grocamor         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:08:47 by grocamor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	while (*s)
-	{
-		write(fd, &s, 1);
-		s++;
-	}
+	int		i;
+
+	i = 0;
+	if (s)
+		while (s[i])
+			write(fd, &s[i++], 1);
 }

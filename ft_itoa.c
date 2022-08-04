@@ -1,58 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*ft_strlcat.c                                          :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grocamor <grocamor@student.42barcel>       +#+  +:+       +#+        */
+/*   By: grocamor <grocamor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:38:19 by grocamor          #+#    #+#             */
-/*   Updated: 2022/01/11 12:38:23 by grocamor         ###   ########.fr       */
+/*   Updated: 2022/08/04 12:51:47 by grocamor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-static int	ft_len(long int i)
+long int	ft_abs(long int nbr)
 {
-	int	count;
-
-	count = 0;
-	if (i < 0)
-	{
-		i = i * -1;
-		count++;
-	}
-	while (i > 0)
-	{
-		i = i / 10;
-		count++;
-	}
-	return (count);
+	return ((nbr < 0) ? -nbr : nbr);
 }
 
-char	*ft_itoa(int nb)
+int			ft_len(long int nbr)
 {
-	char		*newstr;
-	int			len;
-	long int	n;
+	int		len;
 
-	n = nb;
-	len = ft_len(n) - 1;
-	newstr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!newstr)
-		return (NULL);
-	if (n == 0)
+	len = (nbr <= 0) ? 1 : 0;
+	while (nbr != 0)
 	{
-		newstr[0] = 48;
+		nbr = nbr / 10;
+		len++;
 	}
-	if (n < 0)
+	return (len);
+}
+
+char		*ft_itoa(int n)
+{
+	int		len;
+	int		sign;
+	char	*c;
+
+	sign = (n < 0) ? -1 : 1;
+	len = ft_len(n);
+	c = (char *)malloc(sizeof(char) * len + 1);
+	if (c == NULL)
+		return (0);
+	c[len] = '\0';
+	len--;
+	while (len >= 0)
 	{
-		newstr[0] = '-';
-		n = n * -1;
+		c[len] = '0' + ft_abs(n % 10);
+		n = ft_abs(n / 10);
+		len--;
 	}
-	while (n > 0)
-	{
-		newstr[len--] = n % 10 + '0';
-		n = n / 10;
-	}
-	return (newstr);
+	if (sign == -1)
+		c[0] = '-';
+	return (c);
 }
