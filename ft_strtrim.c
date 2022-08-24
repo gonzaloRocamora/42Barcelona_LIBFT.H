@@ -6,7 +6,7 @@
 /*   By: grocamor <grocamor@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 16:09:26 by grocamor          #+#    #+#             */
-/*   Updated: 2022/04/19 19:47:28 by grocamor         ###   ########.fr       */
+/*   Updated: 2022/08/09 11:55:03 by grocamor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -21,14 +21,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!s1 || !set)
 		return (NULL);
 	while (s1[i] && ft_strchr (set, s1[i]))
-	{
 		i++;
-	}
 	len = ft_strlen (s1);
 	while (len && ft_strchr (set, s1[len]))
-	{
 		len--;
-	}
 	newstr = ft_substr (s1, i, len - i + 1);
 	return (newstr);
 }

@@ -6,7 +6,7 @@
 #    By: grocamor <grocamor@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/02 11:27:22 by grocamor          #+#    #+#              #
-#    Updated: 2022/08/04 13:08:14 by grocamor         ###   ########.fr        #
+#    Updated: 2022/08/24 11:30:25 by grocamor         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,8 @@ SRCS =	ft_atoi.c \
 		ft_strlen.c \
 		ft_strmapi.c \
 		ft_strncmp.c \
-		ft_strnstr.c \
 		ft_strrchr.c \
+		ft_strnstr.c \
 		ft_strtrim.c \
 		ft_substr.c \
 		ft_tolower.c \
@@ -49,7 +49,7 @@ SRCS =	ft_atoi.c \
 
 COMPILE = gcc
 
-FLGAS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror 
 
 INCLUDES := -I . \	
 
@@ -57,11 +57,20 @@ DEL = rm -rf
 
 OBJ = $(SRCS:%.c=%.o)
 
-all : $(NAME)
+OBJ_DIR = obj
 
-$(NAME): $(OBJ) libft.h
-		@ar rc $(NAME) $(OBJ)
-		@ranlib $(NAME)	
+%.o: %.c libft.h
+	@echo $@ es compilado!
+	@gcc $(FLAGS) -c $< -o $@
+
+#$^ todos que estan despues de los dos puntos
+#$< el primer elemento dela primera lista despues de los dos puntos (se es solo un objecto, coge este objecto)
+#$@ antes de los dos puntos
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+		@ar rcs $(NAME) $(OBJ)
 		@echo "compOk"
 
 clean:
@@ -74,3 +83,10 @@ norm:
 	@norminette $(SRCS)
 
 re: fclean all
+
+git: 
+	git add .
+	git commit -m "$m"
+	git push 
+
+.PHONY: all fclean clean re

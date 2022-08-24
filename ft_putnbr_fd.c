@@ -19,9 +19,9 @@ static unsigned int	ft_module_fd(int n)
 		return (n);
 }
 
-void				ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int num;
+	unsigned int	num;
 
 	if (n < 0)
 		ft_putchar_fd('-', fd);
