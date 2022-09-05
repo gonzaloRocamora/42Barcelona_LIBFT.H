@@ -6,67 +6,95 @@
 /*   By: grocamor <grocamor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:38:19 by grocamor          #+#    #+#             */
-/*   Updated: 2022/08/24 11:32:06 by grocamor         ###   ########.fr       */
+/*   Updated: 2022/09/05 18:15:37 by grocamor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_words(char const *s, char c)
+static char	**free_all_if_error(char **array)
 {
-	size_t	word_count;
-	int		skip;
+	unsigned int	i;
 
-	word_count = 0;
-	skip = 1;
-	while (*s)
+	i = 0;
+	while (array[i])
 	{
-		if (*s != c && skip)
-		{
-			skip = 0;
-			word_count++;
-		}
-		else if (*s == c)
-			skip = 1;
-		s++;
+		free(array[i]);
+		i++;
 	}
-	return (word_count);
+	free(array);
+	return (NULL);
 }
 
-static void	make_words(char **words, char const *s, char c, size_t n_words)
+static unsigned int	get_nb_cols(char const *s, char c)
 {
-	char	*ptr_c;
+	unsigned int	i;
+	unsigned int	nb_cols;
 
-	while (*s && *s == c)
-		s++;
-	while (n_words--)
+	nb_cols = 0;
+	if (!s[0])
+		return (0);
+	i = 0;
+	while (s[i] && s[i] == c)
+		i++;
+	while (s[i])
 	{
-		ptr_c = ft_strchr(s, c);
-		if (ptr_c != NULL)
+		if (s[i] == c)
 		{
-			*words = ft_substr(s, 0, ptr_c - s);
-			while (*ptr_c && *ptr_c == c)
-				ptr_c++;
-			s = ptr_c;
+			nb_cols++;
+			while (s[i] && s[i] == c)
+				i++;
+			continue ;
 		}
-		else
-			*words = ft_substr(s, 0, ft_strlen(s) + 1);
-		words++;
+		i++;
 	}
-	*words = NULL;
+	if (s[i - 1] != c)
+		nb_cols++;
+	return (nb_cols);
+}
+
+static void	get_row(char **row, unsigned int *row_len, char c)
+{
+	unsigned int	i;
+
+	*row += *row_len;
+	*row_len = 0;
+	i = 0;
+	while (**row && **row == c)
+		(*row)++;
+	while ((*row)[i])
+	{
+		if ((*row)[i] == c)
+			return ;
+		(*row_len)++;
+		i++;
+	}
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	num_words;
-	char	**words;
+	char			**splitted;
+	char			*row;
+	unsigned int	i;
+	unsigned int	nb_c;
+	unsigned int	row_len;
 
-	if (s == NULL)
+	nb_c = get_nb_cols(s, c);
+	splitted = malloc(sizeof(char *) * (nb_c + 1));
+	if (splitted == NULL)
 		return (NULL);
-	num_words = count_words(s, c);
-	words = malloc(sizeof(char **) * (num_words + 1));
-	if (words == NULL)
-		return (NULL);
-	make_words(words, s, c, num_words);
-	return (words);
+	row = (char *)s;
+	row_len = 0;
+	i = 0;
+	while (i < nb_c)
+	{
+		get_row(&row, &row_len, c);
+		splitted[i] = malloc(sizeof(char) * (row_len + 1));
+		if (splitted[i] == NULL)
+			return (free_all_if_error(splitted));
+		ft_strlcpy(splitted[i], row, row_len + 1);
+		i++;
+	}
+	splitted[i] = NULL;
+	return (splitted);
 }
